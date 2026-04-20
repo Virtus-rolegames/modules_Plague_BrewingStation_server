@@ -22,7 +22,7 @@ class ConfigData(BaseModel):
 def runserver():
     uvicorn.run(
         app,  # можно передать сам объект app
-        host="0.0.0.0",  # или "0.0.0.0" чтобы был доступен извне
+        host="127.0.0.1",  # или "0.0.0.0" чтобы был доступен извне
         port=63421,
         log_level="info"  # уровень логов: debug / info / warning / error
     )
