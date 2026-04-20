@@ -22,8 +22,8 @@ class ConfigData(BaseModel):
 def runserver():
     uvicorn.run(
         app,  # можно передать сам объект app
-        host="127.0.0.1",  # или "0.0.0.0" чтобы был доступен извне
-        port=8000,
+        host="0.0.0.0",  # или "0.0.0.0" чтобы был доступен извне
+        port=63421,
         log_level="info"  # уровень логов: debug / info / warning / error
     )
 
@@ -85,25 +85,5 @@ if __name__ == "__main__":
         name TEXT PRIMARY KEY NOT NULL,
         json_data JSON NOT NULL
         )''')
-
-        cursor.execute('''
-            INSERT OR REPLACE INTO presets(name, json_data)
-            VALUES (?, ?) ''',
-            (
-            "test",
-            json.dumps(data)
-            ))
-
-        cursor.execute('''
-            INSERT OR REPLACE INTO presets(name, json_data)
-            VALUES (?, ?) ''',
-            (
-            "test2",
-            json.dumps(data)
-            ))
-
-        cursor.execute("SELECT * FROM presets")
-        presets = cursor.fetchall()
-        print(presets)
 
     runserver()
