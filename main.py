@@ -75,9 +75,6 @@ def write_config(config_name: str, payload: ConfigData):
 
 
 if __name__ == "__main__":
-    with open('data.json', 'r', encoding='utf-8') as f:
-        data = json.load(f)
-
     with sqlite3.connect('presets.db') as connection:
         cursor = connection.cursor()
         cursor.execute('''
