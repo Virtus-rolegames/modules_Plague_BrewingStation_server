@@ -1,0 +1,1 @@
+docker run --name plague_brewing -v $(pwd):/app plague_brewing:latest
