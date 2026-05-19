@@ -1,7 +1,7 @@
 import json
 import logging
 import sqlite3
-from typing import List
+from typing import List, Dict
 
 import uvicorn
 from fastapi import FastAPI
@@ -11,12 +11,7 @@ app = FastAPI()
 
 
 class ConfigData(BaseModel):
-    A: List[str]
-    B: List[str]
-    C: List[str]
-    D: List[str]
-    E: List[str]
-    F: List[str]
+    cards: Dict[str, str]
 
 
 def runserver():
@@ -82,5 +77,7 @@ if __name__ == "__main__":
         name TEXT PRIMARY KEY NOT NULL,
         json_data JSON NOT NULL
         )''')
+        
+        connection.commit()
 
     runserver()
